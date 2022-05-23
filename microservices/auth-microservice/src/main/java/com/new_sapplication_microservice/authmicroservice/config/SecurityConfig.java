@@ -55,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
 
                 .antMatchers(Api.PREFIX + Api.REGISTER)
-                .permitAll()
+                .hasAuthority(RoleEnum.CREATOR.name())
 
                 .antMatchers(Api.PREFIX + Api.LOGOUT)
                 .permitAll()
@@ -68,6 +68,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .antMatchers("/**/admin")
                 .hasAuthority(RoleEnum.ADMIN.name())
+
+                .antMatchers("/**/users/all")
+                .hasAuthority(RoleEnum.CREATOR.name())
 
                 .anyRequest().authenticated();
     }

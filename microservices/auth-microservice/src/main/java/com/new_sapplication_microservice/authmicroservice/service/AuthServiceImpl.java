@@ -48,7 +48,7 @@ public class AuthServiceImpl implements AuthService {
         UserDetails userDetails = userDetailsService.loadUserByUsername(userEntity.getEmail());
 
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-                userSignInRequestDTO.getUserEmail(),
+                userSignInRequestDTO.getEmail(),
                 userSignInRequestDTO.getPassword(),
                 userDetails.getAuthorities()
         );
@@ -60,11 +60,15 @@ public class AuthServiceImpl implements AuthService {
     }
 
     private UserEntity findUserByEmailAndPassword(UserSignInRequestDTO userSignInRequestDTO) {
-        String encodedPassword = passwordEncoder.encode(userSignInRequestDTO.getPassword());
-
-        return userRepository
-                .findAllByEmailAndPassword(userSignInRequestDTO.getUserEmail(), encodedPassword)
+        UserEntity userEntity = userRepository
+                .findByEmail(userSignInRequestDTO.getEmail())
                 .orElseThrow(UserNotFoundException::new);
+
+        if (!passwordEncoder.matches(userSignInRequestDTO.getPassword(), userEntity.getPassword())) {
+            throw new UserNotFoundException();
+        }
+
+        return userEntity;
     }
 
     @Override

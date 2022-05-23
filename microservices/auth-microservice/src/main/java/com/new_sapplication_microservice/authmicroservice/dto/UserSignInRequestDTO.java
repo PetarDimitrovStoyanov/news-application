@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 public class UserSignInRequestDTO {
 
     @NotNull(message = "The user's email field cannot be null.")
-    private String userEmail;
+    private String email;
 
     @NotNull(message = "The password cannot be null.")
     private String password;

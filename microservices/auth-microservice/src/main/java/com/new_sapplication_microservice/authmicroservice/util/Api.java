@@ -5,4 +5,5 @@ public class Api {
     public static final String SIGN_IN = "/sign-in";
     public static final String REGISTER = "/register";
     public static final String LOGOUT = "/logout";
+    public static final String USERS = "/all";
 }
