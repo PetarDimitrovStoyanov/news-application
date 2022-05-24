@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class UserDto {
+public class UserDTO {
 
     private String id;
 
@@ -34,5 +34,5 @@ public class UserDto {
     @Size(min = 4)
     private String password;
 
-    private List<RoleDto> roles;
+    private List<RoleDTO> roles;
 }

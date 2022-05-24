@@ -20,5 +20,7 @@ public class UserDTO {
 
     private String lastName;
 
+    private String picture;
+
     private List<RoleDTO> roles;
 }
