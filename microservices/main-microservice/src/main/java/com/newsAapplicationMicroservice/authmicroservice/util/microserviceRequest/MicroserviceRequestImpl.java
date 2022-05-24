@@ -1,6 +1,5 @@
 package com.newsAapplicationMicroservice.authmicroservice.util.microserviceRequest;
 
-import com.newsAapplicationMicroservice.authmicroservice.dto.UserDTO;
 import com.newsAapplicationMicroservice.authmicroservice.exception.MicroserviceNullPointerException;
 import com.newsAapplicationMicroservice.authmicroservice.exception.MicroserviceStatusCodeException;
 import com.newsAapplicationMicroservice.authmicroservice.interceptor.HeaderInterceptor;
