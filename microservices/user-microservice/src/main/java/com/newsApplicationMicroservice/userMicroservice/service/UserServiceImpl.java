@@ -1,5 +1,6 @@
 package com.newsApplicationMicroservice.userMicroservice.service;
 
+import com.newsApplicationMicroservice.userMicroservice.dto.ChangeRoleDTO;
 import com.newsApplicationMicroservice.userMicroservice.exceptions.UserNotFoundException;
 import com.newsApplicationMicroservice.userMicroservice.repository.UserRepository;
 import com.newsApplicationMicroservice.userMicroservice.enums.RoleEnum;
@@ -9,11 +10,13 @@ import com.newsApplicationMicroservice.userMicroservice.entity.RoleEntity;
 import com.newsApplicationMicroservice.userMicroservice.entity.UserEntity;
 import com.newsApplicationMicroservice.userMicroservice.repository.RoleRepository;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -22,6 +25,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final RoleRepository roleRepository;
+    private final ModelMapper modelMapper;
 
     @Override
     public UserDto getUserByEmail(String email) {
@@ -57,8 +61,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto getFirstUser() {
-        return getAllUsers().get(0);
+    @Transactional
+    public void changeUserRole(String userId, ChangeRoleDTO changeRoleDTO) {
+        RoleEntity oldRole = roleRepository.findByName(changeRoleDTO.getOldRole().getName());
+        RoleEntity newRole = roleRepository.findByName(changeRoleDTO.getNewRole().getName());
+
+        UserEntity userEntity = userRepository
+                .findById(UUID.fromString(userId))
+                .orElseThrow(() -> new UserNotFoundException(userId));
+
+        List<RoleEntity> roles = userEntity.getRoles();
+        roles.removeIf(role -> role.getName().equalsIgnoreCase(oldRole.getName()));
+
+        if(!roles.contains(newRole)){
+            roles.add(newRole);
+        }
+
+        userRepository.save(userEntity);
     }
 
     private UserEntity mapDtoToUserEntity(UserDto userDto, RoleEntity roleEntity) {

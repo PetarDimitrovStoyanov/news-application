@@ -5,6 +5,8 @@ import com.newsAapplicationMicroservice.authmicroservice.exception.MicroserviceS
 import com.newsAapplicationMicroservice.authmicroservice.interceptor.HeaderInterceptor;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -41,6 +43,16 @@ public class MicroserviceRequestImpl implements MicroserviceRequest {
         checkResponseBody(url, responseEntity.getBody());
 
         return modelMapper.map(responseEntity.getBody(), returnTypeClass);
+    }
+
+    public <T> void postObject(String url, T payload) {
+        addSecretKeyAsHeaderToRequest();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Content-type", "application/json");
+        HttpEntity<T> httpEntity = new HttpEntity<>(payload, headers);
+
+        restTemplate.postForObject(url, httpEntity, Object.class);
     }
 
     private void checkResponseBody(String url, Object body) {
