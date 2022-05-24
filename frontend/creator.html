@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Creator</title>
+</head>
+<body>
+<h1 style="font-weight: 100">CREATOR PAGE</h1>
+<a href="after-login.html" style="margin-top: 100px; margin-left: 200px">AFTER LOGIN PAGE</a>
+<p id="all-users"></p>
+<button id="get-all">get all users</button>
+</body>
+<script>
+    document.getElementById("get-all").addEventListener("click", () => {
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        fetch('http://localhost:8002/users/all', {
+            method: 'GET',
+            headers: {
+                'Authorization': currentUser.jwtToken
+            }
+        }).then(async (response) => {
+            let result = await response.json();
+            document.getElementById("all-users").textContent = JSON.stringify(result);
+        }).catch(error => {
+            console.error(error.message)
+        });
+    });
+</script>
+</html>

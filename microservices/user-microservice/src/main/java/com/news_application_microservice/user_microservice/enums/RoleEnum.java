@@ -1,7 +1,7 @@
 package com.news_application_microservice.user_microservice.enums;
 
 public enum RoleEnum {
-    CREATOR("creator"),MANAGER("manager"), ADMIN("admin");
+    CANDIDATE("candidate"), CREATOR("creator"),MANAGER("manager"), ADMIN("admin");
     private String name;
 
     RoleEnum(String name) {

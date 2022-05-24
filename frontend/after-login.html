@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>After-login</title>
+</head>
+<body>
+<a href="admin.html" style="margin-top: 100px; margin-left: 200px">ADMIN PAGE</a>
+<a href="manager.html" style="margin-top: 100px; margin-left: 200px">MANAGER PAGE</a>
+<a href="creator.html" style="margin-top: 100px; margin-left: 200px">CREATOR PAGE</a>
+<button id="logout" style="background: cornflowerblue; margin: 5px 5px 5px 200px; cursor: pointer">LOGOUT</button>
+<script>
+    document.getElementById("logout").addEventListener("click", () => {
+
+        fetch('http://localhost:8002/auth/logout', {method: 'POST'})
+            .then(response => {
+                if (response.status === 200) {
+                    localStorage.removeItem('currentUser')
+                    window.location.href = "http://localhost:3000/index.html";
+                }
+            }).catch(error => {
+            console.log(error.message)
+        });
+        window.location.href = "http://localhost:3000/index.html";
+    })
+</script>
+</body>
+</html>

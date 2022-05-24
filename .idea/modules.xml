@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/microservices/auth-microservice/auth-microservice.iml" filepath="$PROJECT_DIR$/microservices/auth-microservice/auth-microservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservices/main-microservice/auth-microservice.iml" filepath="$PROJECT_DIR$/microservices/main-microservice/auth-microservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservices/new-microservice/new-microservice.iml" filepath="$PROJECT_DIR$/microservices/new-microservice/new-microservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/news-application.iml" filepath="$PROJECT_DIR$/.idea/news-application.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservices/picture-microservice/picture-microservice.iml" filepath="$PROJECT_DIR$/microservices/picture-microservice/picture-microservice.iml" />

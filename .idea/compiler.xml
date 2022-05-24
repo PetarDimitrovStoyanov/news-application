@@ -8,8 +8,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="new-microservice" />
-        <module name="auth-microservice" />
         <module name="picture-microservice" />
+        <module name="auth-microservice" />
         <module name="user-microservice" />
         <module name="version-microservice" />
       </profile>
