@@ -29,10 +29,10 @@ public class NewServiceImpl implements NewService {
     private final ModelMapper modelMapper;
 
     @Override
-    public List<NewDTO> findAllNews() {
-        List<NewEntity> news = newRepository.findAll();
+    public List<NewDTO> findAllByIsActiveTrueOrderByCreatedDateDesc() {
+        List<NewEntity> news = newRepository.findAllByIsActiveTrueOrderByCreatedDateDesc();
 
-        return news.stream().map(this::mapNewEntityToDto).collect(Collectors.toList());
+        return news.stream().map(aNew -> modelMapper.map(aNew, NewDTO.class)).collect(Collectors.toList());
     }
 
     @Override
@@ -68,6 +68,13 @@ public class NewServiceImpl implements NewService {
     @Override
     public List<NewDTO> findAllByCategory(String categoryId) {
         List<NewEntity> news = newRepository.findAllByCategoriesId(categoryId);
+
+        return news.stream().map(aNew -> modelMapper.map(aNew, NewDTO.class)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<NewDTO> findAllManagement() {
+        List<NewEntity> news = newRepository.findAll();
 
         return news.stream().map(aNew -> modelMapper.map(aNew, NewDTO.class)).collect(Collectors.toList());
     }

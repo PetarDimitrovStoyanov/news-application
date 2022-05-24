@@ -18,17 +18,30 @@ import java.util.List;
 public class NewEntity {
     @Id
     private String id;
+
     private String description;
+
     private String topic;
+
     private Integer views;
+
     private LocalDateTime createdDate;
+
     private LocalDateTime editedDate;
+
     private Boolean isActive;
+
     private String mainPicture;
+
     private String secondPicture;
+
     private String thirdPicture;
+
     private String forthPicture;
+
     private List<CategoryEntity> categories;
+
     private String authorId;
+
     private String mangerId;
 }

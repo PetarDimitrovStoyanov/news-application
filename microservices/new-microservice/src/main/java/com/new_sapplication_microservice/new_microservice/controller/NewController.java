@@ -21,9 +21,17 @@ public class NewController {
     private final NewService newService;
 
     @GetMapping(value = Api.GET_ALL)
-    public ResponseEntity<List<NewDTO>> getAllNews() {
+    public ResponseEntity<List<NewDTO>> getAllByIsActiveTrueOrderByCreatedDateDesc() {
         log.info("Getting all news");
-        List<NewDTO> news = newService.findAllNews();
+        List<NewDTO> news = newService.findAllByIsActiveTrueOrderByCreatedDateDesc();
+
+        return ResponseEntity.ok().body(news);
+    }
+
+    @GetMapping(value = Api.GET_ALL_MANAGEMENT)
+    public ResponseEntity<List<NewDTO>> getAllManagement(){
+        log.info("Getting all news for management purposes");
+        List<NewDTO> news = newService.findAllManagement();
 
         return ResponseEntity.ok().body(news);
     }
