@@ -52,7 +52,7 @@ public class NewController {
         return ResponseEntity.ok().body(news);
     }
 
-    @PostMapping
+    @PostMapping(value = Api.CREATE_A_NEW)
     public ResponseEntity<NewEntity> createANew(@RequestBody @Valid CreateANewDTO newDto) {
         log.info("Creating a new {}", newDto);
 

@@ -11,14 +11,20 @@ import java.util.List;
 @ToString
 @Getter
 public class CreateANewDTO {
-    @NotBlank
+
     private String description;
-    @NotBlank
+
     private String topic;
-    @NotBlank
+
     private List<String> categories;
+
     private String mainPicture;
+
     private String secondPicture;
+
     private String thirdPicture;
+
     private String forthPicture;
+
+    private String authorId;
 }

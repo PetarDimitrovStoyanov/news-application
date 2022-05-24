@@ -6,4 +6,5 @@ public class Api {
     public static final String NEWS = "/news";
     public static final String GET_ALL_BY_CATEGORY = "/get-all-by-category/{categoryId}";
     public static final String GET_ALL_MANAGEMENT = "/get-all-management";
+    public static final String CREATE_A_NEW = "/create-a-new";
 }

@@ -64,6 +64,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(Api.PREFIX + Api.NEWS + Api.GET_ALL_NEWS_MANAGEMENT)
                 .hasAuthority(RoleEnum.MANAGER.name())
 
+                .antMatchers(Api.PREFIX + Api.NEWS + Api.CREATE_A_NEW)
+                .hasAuthority(RoleEnum.CREATOR.name())
+
                 .antMatchers(Api.PREFIX + Api.REGISTER)
                 .permitAll()
 
