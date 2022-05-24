@@ -1,7 +1,7 @@
 package com.newsAapplicationMicroservice.authmicroservice.controller;
 
 import com.newsAapplicationMicroservice.authmicroservice.dto.ChangeRoleDTO;
-import com.newsAapplicationMicroservice.authmicroservice.dto.UserDTO;
+import com.newsAapplicationMicroservice.authmicroservice.dto.UserMainDTO;
 import com.newsAapplicationMicroservice.authmicroservice.util.Api;
 import com.newsAapplicationMicroservice.authmicroservice.util.microserviceRequest.MicroserviceRequest;
 import lombok.AllArgsConstructor;
@@ -29,17 +29,17 @@ public class UserController {
     private final MicroserviceRequest microserviceRequest;
 
     @GetMapping(value = Api.ALL)
-    public List<UserDTO> getAllUsers() {
+    public List<UserMainDTO> getAllUsers() {
         String url = "http://localhost:8001/users/all";
 
-        return microserviceRequest.getObjects(url, UserDTO.class);
+        return microserviceRequest.getObjects(url, UserMainDTO.class);
     }
 
     @GetMapping(value = Api.USER_BY_ID)
-    public UserDTO getUserById(@PathVariable String userId){
+    public UserMainDTO getUserById(@PathVariable String userId){
         String url = String.format("http://localhost:8001/users/%s", userId);
 
-        return microserviceRequest.getObject(url, UserDTO.class);
+        return microserviceRequest.getObject(url, UserMainDTO.class);
     }
 
     @PostMapping(value = Api.CHANGE_USER_ROLE)

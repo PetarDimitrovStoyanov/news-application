@@ -52,6 +52,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(Api.PREFIX + Api.LOGIN)
                 .permitAll()
 
+                .antMatchers(Api.PREFIX + Api.NEWS + Api.GET_A_NEW_BY_ID)
+                .permitAll()
+
+                .antMatchers(Api.PREFIX + Api.NEWS + Api.GET_ALL_NEWS)
+                .permitAll()
+
                 .antMatchers(Api.PREFIX + Api.REGISTER)
                 .permitAll()
 
@@ -59,7 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .hasAuthority(RoleEnum.CREATOR.name())
 
                 .antMatchers(Api.PREFIX + Api.USERS + "/**")
-                .hasAuthority(RoleEnum.CREATOR.name())
+                .hasAuthority(RoleEnum.MANAGER.name())
 
                 .anyRequest().authenticated()
 

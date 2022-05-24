@@ -11,7 +11,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDTO {
+public class UserMainDTO {
     private String id;
 
     private String email;
@@ -22,5 +22,5 @@ public class UserDTO {
 
     private String picture;
 
-    private List<RoleDTO> roles;
+    private List<RoleMainDTO> roles;
 }

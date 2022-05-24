@@ -14,8 +14,8 @@ import javax.validation.constraints.NotNull;
 public class ChangeRoleDTO {
     
     @NotNull(message = "The oldRole cannot be null.")
-    private RoleDTO oldRole;
+    private RoleMainDTO oldRole;
 
     @NotNull(message = "The newRole cannot be null.")
-    private RoleDTO newRole;
+    private RoleMainDTO newRole;
 }

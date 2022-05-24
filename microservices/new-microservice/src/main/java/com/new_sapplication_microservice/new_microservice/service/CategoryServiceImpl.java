@@ -1,6 +1,6 @@
 package com.new_sapplication_microservice.new_microservice.service;
 
-import com.new_sapplication_microservice.new_microservice.dto.CategoryDto;
+import com.new_sapplication_microservice.new_microservice.dto.CategoryDTO;
 import com.new_sapplication_microservice.new_microservice.entity.CategoryEntity;
 import com.new_sapplication_microservice.new_microservice.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,11 +17,11 @@ public class CategoryServiceImpl implements CategoryService {
     private final ModelMapper modelMapper;
 
     @Override
-    public List<CategoryDto> getAllCategories() {
+    public List<CategoryDTO> getAllCategories() {
         List<CategoryEntity> categories = categoryRepository.findAll();
 
         return categories.stream()
-                .map(category -> modelMapper.map(category, CategoryDto.class))
+                .map(category -> modelMapper.map(category, CategoryDTO.class))
                 .collect(Collectors.toList());
     }
 }

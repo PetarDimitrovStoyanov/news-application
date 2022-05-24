@@ -1,6 +1,6 @@
 package com.new_sapplication_microservice.new_microservice.controller;
 
-import com.new_sapplication_microservice.new_microservice.dto.CategoryDto;
+import com.new_sapplication_microservice.new_microservice.dto.CategoryDTO;
 import com.new_sapplication_microservice.new_microservice.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,10 +19,10 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @GetMapping
-    public ResponseEntity<List<CategoryDto>> getAllCategories() {
+    public ResponseEntity<List<CategoryDTO>> getAllCategories() {
         log.info("Getting all categories");
 
-        List<CategoryDto> categories = categoryService.getAllCategories();
+        List<CategoryDTO> categories = categoryService.getAllCategories();
         return ResponseEntity.ok().body(categories);
     }
 }

@@ -24,5 +24,5 @@ public class LoginResponseDTO {
 
     private String picture;
 
-    private List<RoleDTO> roles;
+    private List<RoleMainDTO> roles;
 }
