@@ -36,6 +36,13 @@ public class NewController {
         return microserviceRequest.getObjects(url, NewDTO.class);
     }
 
+    @GetMapping(value = Api.GET_ALL_NEWS_MANAGEMENT)
+    public List<NewDTO> getAllManagement(){
+        String url = "http://localhost:8003/news/get-all-management";
+
+        return microserviceRequest.getObjects(url, NewDTO.class);
+    }
+
     @GetMapping(value = Api.GET_ALL_BY_CATEGORY)
     public List<NewDTO> getAllByCategory(@PathVariable String categoryId){
         String url = String.format("http://localhost:8003/news/get-all-by-category/%s", categoryId);

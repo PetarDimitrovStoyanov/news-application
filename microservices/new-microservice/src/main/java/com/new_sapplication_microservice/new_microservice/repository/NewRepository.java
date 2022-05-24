@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface NewRepository extends MongoRepository<NewEntity, String> {
     List<NewEntity> findAllByCategoriesId(String categoryId);
+
+    List<NewEntity> findAllByIsActiveTrueOrderByCreatedDateDesc();
 }

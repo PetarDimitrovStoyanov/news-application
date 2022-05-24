@@ -21,9 +21,9 @@ public class NewDTO {
 
     private Integer views;
 
-    private LocalDateTime createdDate;
+    private String createdDate;
 
-    private LocalDateTime editedDate;
+    private String editedDate;
 
     private Boolean isActive;
 

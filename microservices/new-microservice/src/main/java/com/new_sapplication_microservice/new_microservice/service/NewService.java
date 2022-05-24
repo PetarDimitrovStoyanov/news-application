@@ -7,11 +7,14 @@ import com.new_sapplication_microservice.new_microservice.entity.NewEntity;
 import java.util.List;
 
 public interface NewService {
-    List<NewDTO> findAllNews();
+    List<NewDTO> findAllByIsActiveTrueOrderByCreatedDateDesc();
 
     NewDTO findById(String id);
 
     NewEntity createANew(CreateANewDTO newDto);
 
     List<NewDTO> findAllByCategory(String categoryId);
+
+    List<NewDTO> findAllManagement();
+
 }
