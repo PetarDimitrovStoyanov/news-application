@@ -65,6 +65,13 @@ public class NewServiceImpl implements NewService {
         return newRepository.save(newEntity);
     }
 
+    @Override
+    public List<NewDTO> findAllByCategory(String categoryId) {
+        List<NewEntity> news = newRepository.findAllByCategoriesId(categoryId);
+
+        return news.stream().map(aNew -> modelMapper.map(aNew, NewDTO.class)).collect(Collectors.toList());
+    }
+
     private CategoryEntity getCategory(String categoryName) {
 
         return categoryRepository.findByName(CategoryEnum.valueOf(categoryName.toUpperCase()).getName())

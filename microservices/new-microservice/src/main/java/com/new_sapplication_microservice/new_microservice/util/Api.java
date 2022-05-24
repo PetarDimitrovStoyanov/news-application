@@ -4,4 +4,5 @@ public class Api {
     public static final String GET_ALL = "/get-all";
     public static final String GET_BY_ID = "/{newId}";
     public static final String NEWS = "/news";
+    public static final String GET_ALL_BY_CATEGORY = "/get-all-by-category/{categoryId}";
 }

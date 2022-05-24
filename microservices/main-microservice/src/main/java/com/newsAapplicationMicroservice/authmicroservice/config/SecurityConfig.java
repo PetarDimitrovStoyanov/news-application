@@ -58,6 +58,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(Api.PREFIX + Api.NEWS + Api.GET_ALL_NEWS)
                 .permitAll()
 
+                .antMatchers(Api.PREFIX + Api.NEWS + Api.GET_ALL_BY_CATEGORY)
+                .permitAll()
+
                 .antMatchers(Api.PREFIX + Api.REGISTER)
                 .permitAll()
 

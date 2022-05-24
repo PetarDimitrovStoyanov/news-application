@@ -13,4 +13,5 @@ public class Api {
     public static final String NEWS = "/news";
     public static final String GET_A_NEW_BY_ID = "/{newId}";
     public static final String GET_ALL_NEWS = "/get-all";
+    public static final String GET_ALL_BY_CATEGORY = "/get-all-by-category/{categoryId}";
 }

@@ -36,6 +36,14 @@ public class NewController {
         return ResponseEntity.ok().body(dto);
     }
 
+    @GetMapping(value = Api.GET_ALL_BY_CATEGORY)
+    public ResponseEntity<List<NewDTO>> getAllByCategory(@PathVariable String categoryId) {
+        log.info("Getting all news by categoryId: {}", categoryId);
+        List<NewDTO> news = newService.findAllByCategory(categoryId);
+
+        return ResponseEntity.ok().body(news);
+    }
+
     @PostMapping
     public ResponseEntity<NewEntity> createANew(@RequestBody @Valid CreateANewDTO newDto) {
         log.info("Creating a new {}", newDto);
