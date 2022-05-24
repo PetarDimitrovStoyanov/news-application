@@ -1,1 +1,7 @@
-asd
+1. RUN User-microservice
+2. RUN Auth-microservice
+
+https://www.youtube.com/watch?v=X80nJ5T7YpE - jwt token
+//special class that add special secret password to child microservices
+// all business logic
+// js picture node with aws https://www.youtube.com/watch?v=NZElg91l_ms

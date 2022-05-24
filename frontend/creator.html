@@ -12,21 +12,18 @@
 </body>
 <script>
     document.getElementById("get-all").addEventListener("click", () => {
-        let username = "creator@creator.bg";
-        let password = "creator";
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
         fetch('http://localhost:8002/users/all', {
             method: 'GET',
             headers: {
-                'Authorization': 'Basic ' + btoa(`${username}:${password}`)
+                'Authorization': currentUser.jwtToken
             }
         }).then(async (response) => {
             let result = await response.json();
-            console.log(result)
             document.getElementById("all-users").textContent = JSON.stringify(result);
-        })
-            .catch(error => {
-                console.log(error.message)
-            });
+        }).catch(error => {
+            console.error(error.message)
+        });
     });
 </script>
 </html>
