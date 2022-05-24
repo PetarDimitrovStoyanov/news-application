@@ -1,14 +1,13 @@
-package com.newsAapplicationMicroservice.authmicroservice.config;
+package com.newsApplicationMicroservice.userMicroservice.config;
 
 import org.modelmapper.ModelMapper;
-import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-@Configuration
+@Component
 public class ApplicationBeanConfiguration {
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -17,15 +16,11 @@ public class ApplicationBeanConfiguration {
 
     @Bean
     public ModelMapper modelMapper() {
-        ModelMapper modelMapper = new ModelMapper();
-        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
-
-        return modelMapper;
+        return new ModelMapper();
     }
 
     @Bean
     public RestTemplate restTemplate(){
-
         return new RestTemplate();
     }
 }
