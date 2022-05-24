@@ -1,8 +1,7 @@
 package com.newsApplicationMicroservice.userMicroservice.controller;
 
 import com.newsApplicationMicroservice.userMicroservice.dto.ChangeRoleDTO;
-import com.newsApplicationMicroservice.userMicroservice.dto.UserDto;
-import com.newsApplicationMicroservice.userMicroservice.entity.UserEntity;
+import com.newsApplicationMicroservice.userMicroservice.dto.UserDTO;
 import com.newsApplicationMicroservice.userMicroservice.service.UserService;
 import com.newsApplicationMicroservice.userMicroservice.util.Api;
 import lombok.RequiredArgsConstructor;
@@ -14,32 +13,24 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping(Api.USERS)
 @RequiredArgsConstructor
 @Slf4j
 public class UserController {
     private final UserService userService;
 
-    @GetMapping("/{email}")
-    public UserDto getUserByEmail(@PathVariable String email) {
-        log.info("Getting a user by email {}", email);
+    @GetMapping(value = Api.USER_BY_ID)
+    public UserDTO getUserById(@PathVariable String userId){
+        log.info("Getting a user by id {}", userId);
 
-        return userService.getUserByEmail(email);
+        return userService.getUserById(userId);
     }
 
-    @GetMapping("/all")
-    public List<UserDto> getAllUsers() {
+    @GetMapping(Api.ALL)
+    public List<UserDTO> getAllUsers() {
         log.info("Getting of all users");
 
         return userService.getAllUsers();
-    }
-
-    @PostMapping
-    public ResponseEntity<UserEntity> createUser(@RequestBody UserDto userDto) {
-        log.info("Creating a user {}", userDto.toString());
-        UserEntity user = userService.createUser(userDto);
-
-        return ResponseEntity.ok().body(user);
     }
 
     @PostMapping(value = Api.CHANGE_USER_ROLE)

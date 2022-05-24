@@ -1,7 +1,7 @@
 package com.newsApplicationMicroservice.userMicroservice.service;
 
-import com.newsApplicationMicroservice.userMicroservice.dto.RoleDto;
+import com.newsApplicationMicroservice.userMicroservice.dto.RoleDTO;
 
 public interface RoleService {
-    RoleDto findByName(String name);
+    RoleDTO findByName(String name);
 }

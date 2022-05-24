@@ -35,6 +35,13 @@ public class UserController {
         return microserviceRequest.getObjects(url, UserDTO.class);
     }
 
+    @GetMapping(value = Api.USER_BY_ID)
+    public UserDTO getUserById(@PathVariable String userId){
+        String url = String.format("http://localhost:8001/users/%s", userId);
+
+        return microserviceRequest.getObject(url, UserDTO.class);
+    }
+
     @PostMapping(value = Api.CHANGE_USER_ROLE)
     public ResponseEntity<?> changeUserRole(@PathVariable String userId, @RequestBody @Valid ChangeRoleDTO changeRoleDTO) {
         String url = String.format("http://localhost:8001/users/%s/change-role", userId);

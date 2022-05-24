@@ -1,17 +1,15 @@
 package com.newsApplicationMicroservice.userMicroservice.service;
 
 import com.newsApplicationMicroservice.userMicroservice.dto.ChangeRoleDTO;
-import com.newsApplicationMicroservice.userMicroservice.dto.UserDto;
-import com.newsApplicationMicroservice.userMicroservice.entity.UserEntity;
+import com.newsApplicationMicroservice.userMicroservice.dto.UserDTO;
 
 import java.util.List;
 
 public interface UserService {
-    UserDto getUserByEmail(String email);
 
-    List<UserDto> getAllUsers();
-
-    UserEntity createUser(UserDto userDto);
+    List<UserDTO> getAllUsers();
 
     void changeUserRole(String userId, ChangeRoleDTO changeRoleDTO);
+
+    UserDTO getUserById(String userId);
 }

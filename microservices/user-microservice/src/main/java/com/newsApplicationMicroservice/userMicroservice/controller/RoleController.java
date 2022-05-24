@@ -1,6 +1,6 @@
 package com.newsApplicationMicroservice.userMicroservice.controller;
 
-import com.newsApplicationMicroservice.userMicroservice.dto.RoleDto;
+import com.newsApplicationMicroservice.userMicroservice.dto.RoleDTO;
 import com.newsApplicationMicroservice.userMicroservice.service.RoleService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +16,7 @@ public class RoleController {
     private final RoleService roleService;
 
     @GetMapping
-    public RoleDto getRoleByName(String name) {
+    public RoleDTO getRoleByName(String name) {
         log.info("Getting a role {}", name);
 
         return roleService.findByName(name);
