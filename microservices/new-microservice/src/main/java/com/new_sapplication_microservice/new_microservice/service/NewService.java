@@ -12,4 +12,6 @@ public interface NewService {
     NewDTO findById(String id);
 
     NewEntity createANew(CreateANewDTO newDto);
+
+    List<NewDTO> findAllByCategory(String categoryId);
 }
