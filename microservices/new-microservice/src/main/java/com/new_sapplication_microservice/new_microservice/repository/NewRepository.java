@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 
 public interface NewRepository extends MongoRepository<NewEntity, String> {
-    List<NewEntity> findAllByCategoriesId(String categoryId);
+    List<NewEntity> findAllByCategoriesIdAndIsActiveTrue(String categoryId);
 
     List<NewEntity> findAllByIsActiveTrueOrderByCreatedDateDesc();
 }
