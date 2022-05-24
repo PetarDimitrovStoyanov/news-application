@@ -1,10 +1,13 @@
 package com.newsApplicationMicroservice.userMicroservice.controller;
 
+import com.newsApplicationMicroservice.userMicroservice.dto.ChangeRoleDTO;
 import com.newsApplicationMicroservice.userMicroservice.dto.UserDto;
 import com.newsApplicationMicroservice.userMicroservice.entity.UserEntity;
 import com.newsApplicationMicroservice.userMicroservice.service.UserService;
+import com.newsApplicationMicroservice.userMicroservice.util.Api;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,11 +42,11 @@ public class UserController {
         return ResponseEntity.ok().body(user);
     }
 
-    @GetMapping("/get-first")
-    public ResponseEntity<UserDto> getFirstUser(){
-        log.info("Getting a first user");
-        UserDto firstUser = userService.getFirstUser();
+    @PostMapping(value = Api.CHANGE_USER_ROLE)
+    public ResponseEntity<?> changeUserRole(@PathVariable String userId, @RequestBody ChangeRoleDTO changeRoleDTO) {
+        log.info("Changing of roles endpoint was reached.");
+        userService.changeUserRole(userId, changeRoleDTO);
 
-        return ResponseEntity.ok().body(firstUser);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

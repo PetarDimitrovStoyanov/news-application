@@ -1,5 +1,6 @@
 package com.newsApplicationMicroservice.userMicroservice.service;
 
+import com.newsApplicationMicroservice.userMicroservice.dto.ChangeRoleDTO;
 import com.newsApplicationMicroservice.userMicroservice.dto.UserDto;
 import com.newsApplicationMicroservice.userMicroservice.entity.UserEntity;
 
@@ -12,5 +13,5 @@ public interface UserService {
 
     UserEntity createUser(UserDto userDto);
 
-    UserDto getFirstUser();
+    void changeUserRole(String userId, ChangeRoleDTO changeRoleDTO);
 }
