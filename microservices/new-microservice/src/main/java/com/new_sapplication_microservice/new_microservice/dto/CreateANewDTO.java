@@ -10,7 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 @Getter
-public class CreateANewDto {
+public class CreateANewDTO {
     @NotBlank
     private String description;
     @NotBlank

@@ -11,19 +11,32 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class NewDto {
+public class NewDTO {
     private String id;
+
     private String description;
+
     private String topic;
+
     private Integer views;
+
     private LocalDateTime createdDate;
+
     private LocalDateTime editedDate;
+
     private Boolean isActive;
+
     private String mainPicture;
+
     private String secondPicture;
+
     private String thirdPicture;
+
     private String forthPicture;
-    private List<CategoryDto> categories;
+
+    private List<CategoryDTO> categories;
+
     private String authorId;
+
     private String mangerId;
 }

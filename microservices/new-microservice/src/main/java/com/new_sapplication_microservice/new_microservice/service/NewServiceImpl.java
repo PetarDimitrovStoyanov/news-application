@@ -1,8 +1,8 @@
 package com.new_sapplication_microservice.new_microservice.service;
 
-import com.new_sapplication_microservice.new_microservice.dto.CategoryDto;
-import com.new_sapplication_microservice.new_microservice.dto.CreateANewDto;
-import com.new_sapplication_microservice.new_microservice.dto.NewDto;
+import com.new_sapplication_microservice.new_microservice.dto.CategoryDTO;
+import com.new_sapplication_microservice.new_microservice.dto.CreateANewDTO;
+import com.new_sapplication_microservice.new_microservice.dto.NewDTO;
 import com.new_sapplication_microservice.new_microservice.entity.Author;
 import com.new_sapplication_microservice.new_microservice.entity.CategoryEntity;
 import com.new_sapplication_microservice.new_microservice.entity.NewEntity;
@@ -29,20 +29,20 @@ public class NewServiceImpl implements NewService {
     private final ModelMapper modelMapper;
 
     @Override
-    public List<NewDto> findAllNews() {
+    public List<NewDTO> findAllNews() {
         List<NewEntity> news = newRepository.findAll();
 
         return news.stream().map(this::mapNewEntityToDto).collect(Collectors.toList());
     }
 
     @Override
-    public NewDto findById(String id) {
+    public NewDTO findById(String id) {
         NewEntity newEntity = newRepository.findById(id).orElseThrow(() -> new NewNotFoundException(id));
         return mapDtoToNewEntity(newEntity);
     }
 
     @Override
-    public NewEntity createANew(CreateANewDto newDto) {
+    public NewEntity createANew(CreateANewDTO newDto) {
         Author author = restTemplate.getForObject("http://localhost:8081/api/v1/users/get-first", Author.class);
 
         NewEntity newEntity = NewEntity.builder()
@@ -71,9 +71,9 @@ public class NewServiceImpl implements NewService {
                 .orElseThrow(() -> new NotFoundCategoryException(categoryName));
     }
 
-    private NewDto mapDtoToNewEntity(NewEntity newEntity) {
+    private NewDTO mapDtoToNewEntity(NewEntity newEntity) {
 
-        return NewDto.builder()
+        return NewDTO.builder()
                 .authorId(newEntity.getAuthorId())
                 .views(newEntity.getViews())
                 .mangerId(newEntity.getMangerId())
@@ -91,9 +91,9 @@ public class NewServiceImpl implements NewService {
                 .build();
     }
 
-    private NewDto mapNewEntityToDto(NewEntity aNew) {
+    private NewDTO mapNewEntityToDto(NewEntity aNew) {
 
-       return NewDto.builder()
+       return NewDTO.builder()
                .id(aNew.getId())
                .authorId(aNew.getAuthorId())
                .categories(mapCategoryEntitiesToCategoryDto(aNew))
@@ -112,17 +112,17 @@ public class NewServiceImpl implements NewService {
                .build();
     }
 
-    private List<CategoryDto> mapCategoryEntitiesToCategoryDto(NewEntity aNew) {
+    private List<CategoryDTO> mapCategoryEntitiesToCategoryDto(NewEntity aNew) {
         return aNew.getCategories().stream().map(this::mapCategoryEntityToCategoryDto).collect(Collectors.toList());
     }
 
-    private CategoryDto mapCategoryEntityToCategoryDto(CategoryEntity a) {
-        return modelMapper.map(a, CategoryDto.class);
+    private CategoryDTO mapCategoryEntityToCategoryDto(CategoryEntity a) {
+        return modelMapper.map(a, CategoryDTO.class);
     }
 
-    private CategoryDto mapCategoryEntityToDto(CategoryEntity category) {
+    private CategoryDTO mapCategoryEntityToDto(CategoryEntity category) {
 
-        return CategoryDto.builder()
+        return CategoryDTO.builder()
                 .id(category.getId())
                 .name(category.getName())
                 .build();

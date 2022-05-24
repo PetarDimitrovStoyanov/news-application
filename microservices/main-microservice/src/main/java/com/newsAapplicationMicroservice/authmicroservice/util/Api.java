@@ -10,4 +10,7 @@ public class Api {
     public static final String LOGIN = "/login";
     public static final String CHANGE_USER_ROLE = "/{userId}/change-user-role";
     public static final String USER_BY_ID = "/{userId}";
+    public static final String NEWS = "/news";
+    public static final String GET_A_NEW_BY_ID = "/{newId}";
+    public static final String GET_ALL_NEWS = "/get-all";
 }

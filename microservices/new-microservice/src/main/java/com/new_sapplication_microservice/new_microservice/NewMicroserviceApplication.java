@@ -10,7 +10,7 @@ public class NewMicroserviceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(NewMicroserviceApplication.class, args);
-		log.info("Server started successfully on port: 8082 - http://localhost:8082");
+		log.info("Server started successfully on port: 8003 - http://localhost:8003/news");
 	}
 
 }
