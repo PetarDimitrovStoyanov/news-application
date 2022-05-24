@@ -74,7 +74,7 @@ public class Initializer implements CommandLineRunner {
             UserEntity manager = new UserEntity();
             manager.setEmail("manager@abv.bg");
             manager.setPassword(passwordEncoder.encode("manager"));
-            manager.setRoles(List.of(managerRole));
+            manager.setRoles(List.of(managerRole, creatorRole));
             manager.setFirstName("Manager");
             manager.setLastName("Managerov");
             manager.setPicture(null);
