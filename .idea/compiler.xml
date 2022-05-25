@@ -15,12 +15,12 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="auth-microservice" target="18" />
+      <module name="auth-microservice" target="16" />
       <module name="main-microservice" target="18" />
-      <module name="new-microservice" target="18" />
-      <module name="picture-microservice" target="18" />
-      <module name="user-microservice" target="18" />
-      <module name="version-microservice" target="18" />
+      <module name="new-microservice" target="16" />
+      <module name="picture-microservice" target="16" />
+      <module name="user-microservice" target="16" />
+      <module name="version-microservice" target="16" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
