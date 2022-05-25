@@ -59,4 +59,11 @@ public class NewController {
         NewEntity aNew = newService.createANew(newDto);
         return ResponseEntity.ok().body(aNew);
     }
+
+    //TODO: ADD A VIEW TO PROJECT
+
+    //TODO: DELETE BY OWNER OR ADMIN
+
+    //TODO: EDIT BY OWNER OR ADMIN
+
 }
