@@ -1,10 +1,15 @@
 1. RUN User-microservice
 2. RUN Auth-microservice
+3. RUN all other microservices
 
-https://www.youtube.com/watch?v=X80nJ5T7YpE - jwt token
-//special class that add special secret password to child microservices
-// all business logic
-// js picture node with aws https://www.youtube.com/watch?v=NZElg91l_ms
-// building an express server: https://www.youtube.com/watch?v=7W61Ep1lKFY
-// creating an AWS S3 https://www.youtube.com/watch?v=TtuCCfren_I
-// get image from S3 https://www.youtube.com/watch?v=NZElg91l_ms
+jwt token: https://www.youtube.com/watch?v=X80nJ5T7YpE
+creating an AWS S3 https://www.youtube.com/watch?v=TtuCCfren_I
+get image from S3 https://www.youtube.com/watch?v=NZElg91l_ms
+
+// TODO:
+// add a secret key to picture microservice
+// clean the unused code in picture microservice
+// connect picture microservice to the main microservice
+// create env file for the secret key between the microservices
+// create front end on react
+// add Alan AI
