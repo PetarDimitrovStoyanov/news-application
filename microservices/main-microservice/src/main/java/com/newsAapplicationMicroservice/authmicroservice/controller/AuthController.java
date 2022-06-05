@@ -31,6 +31,7 @@ public class AuthController {
 
     @PostMapping(value = Api.REGISTER)
     public ResponseEntity<UserRegisterResponseDTO> register(@RequestBody @Valid UserRegisterRequestDTO userRegisterDTO) {
+        log.info("The endpoint for user registration was reached successfully.");
         UserRegisterResponseDTO userRegisterResponseDTO = authService.handleRegister(userRegisterDTO);
 
         return new ResponseEntity<>(userRegisterResponseDTO, HttpStatus.CREATED);
@@ -38,6 +39,7 @@ public class AuthController {
 
     @PostMapping(value = Api.LOGOUT)
     public ResponseEntity<?> logout(HttpServletRequest request, HttpServletResponse response) {
+        log.info("The endpoint for user logout was reached successfully.");
         authService.handleLogout(request, response);
 
         return new ResponseEntity<>(HttpStatus.OK);
@@ -45,6 +47,7 @@ public class AuthController {
 
     @PostMapping(value = Api.LOGIN)
     public ResponseEntity<LoginResponseDTO> signIn(@RequestBody @Valid LoginRequestDTO request) throws Exception {
+        log.info("The endpoint for user login was reached successfully.");
         LoginResponseDTO responseDTO = authService.handleLogin(request);
 
         return ResponseEntity.ok().body(responseDTO);

@@ -16,4 +16,8 @@ public class Api {
     public static final String GET_ALL_BY_CATEGORY = "/get-all-by-category/{categoryId}";
     public static final String GET_ALL_NEWS_MANAGEMENT = "/get-all-management";
     public static final String CREATE_A_NEW = "/create-a-new";
+    public static final String ADD_VIEW = "/add-view/{projectId}";
+    public static final String DELETE_A_NEW = "/delete-a-new";
+    public static final String EDIT_A_NEW = "/edit-a-new";
+    public static final String CHANGE_NEW_STATUS = "/status-change";
 }

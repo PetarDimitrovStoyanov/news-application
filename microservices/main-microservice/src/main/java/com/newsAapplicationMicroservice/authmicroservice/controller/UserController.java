@@ -30,6 +30,7 @@ public class UserController {
 
     @GetMapping(value = Api.ALL)
     public List<UserMainDTO> getAllUsers() {
+        log.info("The endpoint for getting of all users was reached successfully.");
         String url = "http://localhost:8001/users/all";
 
         return microserviceRequest.getObjects(url, UserMainDTO.class);
@@ -37,6 +38,7 @@ public class UserController {
 
     @GetMapping(value = Api.USER_BY_ID)
     public UserMainDTO getUserById(@PathVariable String userId){
+        log.info("The endpoint for getting a user with id: {} was reached successfully.", userId);
         String url = String.format("http://localhost:8001/users/%s", userId);
 
         return microserviceRequest.getObject(url, UserMainDTO.class);
@@ -44,6 +46,7 @@ public class UserController {
 
     @PostMapping(value = Api.CHANGE_USER_ROLE)
     public ResponseEntity<?> changeUserRole(@PathVariable String userId, @RequestBody @Valid ChangeRoleDTO changeRoleDTO) {
+        log.info("The endpoint for changing of user role was reached successfully - for user with id {}.", userId);
         String url = String.format("http://localhost:8001/users/%s/change-role", userId);
         microserviceRequest.postObject(url, changeRoleDTO);
 

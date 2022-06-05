@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -37,7 +38,7 @@ public class MicroserviceRequestImpl implements MicroserviceRequest {
 
     public <T> T getObject(String url, Class<T> returnTypeClass) {
         addSecretKeyAsHeaderToRequest();
-        ResponseEntity<Object> responseEntity = restTemplate.getForEntity(url, Object.class);
+        ResponseEntity<?> responseEntity = restTemplate.getForEntity(url, ResponseEntity.class);
 
         checkResponseStatusCode(url, responseEntity.getStatusCode());
         checkResponseBody(url, responseEntity.getBody());
@@ -45,14 +46,35 @@ public class MicroserviceRequestImpl implements MicroserviceRequest {
         return modelMapper.map(responseEntity.getBody(), returnTypeClass);
     }
 
-    public <T> void postObject(String url, T payload) {
+    public <T> ResponseEntity<?> postObject(String url, T payload) {
         addSecretKeyAsHeaderToRequest();
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Content-type", "application/json");
         HttpEntity<T> httpEntity = new HttpEntity<>(payload, headers);
 
-        restTemplate.postForObject(url, httpEntity, Object.class);
+        return restTemplate.postForObject(url, httpEntity, ResponseEntity.class);
+    }
+
+    public <T> ResponseEntity<?> deleteObject(String url, T payload) {
+        addSecretKeyAsHeaderToRequest();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Content-type", "application/json");
+        HttpEntity<T> httpEntity = new HttpEntity<>(payload, headers);
+
+        return restTemplate.exchange(url, HttpMethod.DELETE, httpEntity, ResponseEntity.class);
+    }
+
+    @Override
+    public <T> ResponseEntity<?> putObject(String url, T payload) {
+        addSecretKeyAsHeaderToRequest();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Content-type", "application/json");
+        HttpEntity<T> httpEntity = new HttpEntity<>(payload, headers);
+
+        return restTemplate.exchange(url, HttpMethod.PUT, httpEntity, ResponseEntity.class);
     }
 
     private void checkResponseBody(String url, Object body) {
@@ -62,7 +84,10 @@ public class MicroserviceRequestImpl implements MicroserviceRequest {
     }
 
     private void checkResponseStatusCode(String url, HttpStatus statusCode) {
-        if (statusCode.value() != HttpStatus.OK.value()) {
+        List<HttpStatus> successfulStatuses = List.of(HttpStatus.OK, HttpStatus.NO_CONTENT, HttpStatus.CREATED);
+        HttpStatus returnStatus = HttpStatus.valueOf(statusCode.value());
+
+        if (!successfulStatuses.contains(returnStatus)) {
             throw new MicroserviceStatusCodeException(url, statusCode.value());
         }
     }
