@@ -1,5 +1,7 @@
 package com.newsAapplicationMicroservice.authmicroservice.util.microserviceRequest;
 
+import org.springframework.http.ResponseEntity;
+
 import java.util.List;
 
 public interface MicroserviceRequest {
@@ -7,5 +9,9 @@ public interface MicroserviceRequest {
 
     <T> T getObject(String url, Class<T> returnTypeClass);
 
-    <T> void postObject(String url, T payload);
+    <T> ResponseEntity<?> postObject(String url, T payload);
+
+    <T> ResponseEntity<?> deleteObject(String url, T payload);
+
+    <T> ResponseEntity<?> putObject(String url, T payload);
 }
