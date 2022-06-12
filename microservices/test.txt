@@ -7,9 +7,6 @@ creating an AWS S3 https://www.youtube.com/watch?v=TtuCCfren_I
 get image from S3 https://www.youtube.com/watch?v=NZElg91l_ms
 
 // TODO:
-// add a secret key to picture microservice
-// clean the unused code in picture microservice
-// connect picture microservice to the main microservice
 // create env file for the secret key between the microservices
 // create front end on react
 // add Alan AI
