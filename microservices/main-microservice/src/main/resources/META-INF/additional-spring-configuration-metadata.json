@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "microservice.key",
+      "type": "java.lang.String",
+      "description": "Description for microservice.key."
+  }
+] }

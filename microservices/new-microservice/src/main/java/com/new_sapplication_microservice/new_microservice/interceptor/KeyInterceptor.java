@@ -1,6 +1,6 @@
-package com.newsApplicationMicroservice.userMicroservice.interceptor;
+package com.new_sapplication_microservice.new_microservice.interceptor;
 
-import com.newsApplicationMicroservice.userMicroservice.exceptions.MicroserviceKeyException;
+import com.new_sapplication_microservice.new_microservice.exception.MicroserviceKeyException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 

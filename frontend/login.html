@@ -12,7 +12,21 @@
     <input type="password" id="password-login" style="display: block">
     <input type="submit" value="submit" style="margin-top: 50px">
 </form>
+<img src="https://news-application-pictures.s3.amazonaws.com/cXwFYim3l7OZpX2VB2J4gf3NHaAlMmITPAShfKoMPy1.jpg" alt="img">
+<img id="test" src="" alt="img2" style="min-width: 100px; background: red">
 <script>
+    document.getElementById("test").addEventListener("click", (event) => {
+	  const imageUrl = "http://localhost:8002/images/VgVOYnTKooEg8Z4AU6YlEkofyLnthyp0VdsLWGtXgF8.jpg";
+	  fetch(imageUrl)
+		.then(response => {
+		  event.target.src = response.url;
+		  response.blob()}
+        )
+		.catch((error) => {
+		  console.error("There was an error during the fetching of an image.")
+        })
+    });
+
     document.getElementById("login-submit").addEventListener("submit", (e) => {
         e.preventDefault();
         let email = document.getElementById("email-login").value;

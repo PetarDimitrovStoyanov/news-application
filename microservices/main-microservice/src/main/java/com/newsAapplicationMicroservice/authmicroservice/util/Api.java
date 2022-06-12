@@ -20,4 +20,9 @@ public class Api {
     public static final String DELETE_A_NEW = "/delete-a-new";
     public static final String EDIT_A_NEW = "/edit-a-new";
     public static final String CHANGE_NEW_STATUS = "/status-change";
+    public static final String IMAGES = "/images";
+    public static final String SAVE_IMAGE = "/save-image";
+    public static final String IMAGE_FILE_PATH = "microservices/main-microservice/src/main/java/com/newsAapplicationMicroservice/authmicroservice/img/";
+    public static final String GET_IMAGE_BY_ID = "/{imageId}";
+    public static final String DELETE_IMAGE_BY_ID = "/delete-image-by-id/{imageId}";
 }

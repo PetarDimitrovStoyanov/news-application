@@ -10,7 +10,6 @@
         <module name="new-microservice" />
         <module name="auth-microservice" />
         <module name="user-microservice" />
-        <module name="version-microservice" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
